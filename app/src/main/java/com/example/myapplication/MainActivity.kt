@@ -14,7 +14,9 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,16 +32,15 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
-                ) {
-                    var vlrDoTextFild by remember {
+                ) { var vlrDoTextFild by rememberSaveable {
                         mutableStateOf("");
                     }
-                    Column () {
+                    Column() {
                         TextField(value = vlrDoTextFild, onValueChange = {
                             vlrDoTextFild = it;
-                            Log.i("####",vlrDoTextFild)
+                            Log.i("####", vlrDoTextFild)
                         })
-
+                        Text(text = "$vlrDoTextFild")
                     }
 
                 }
